@@ -1,1 +1,3 @@
+#Python script with terminal
 
+#
