@@ -3,7 +3,6 @@ Stock sender by email
 #worsk only with Python 2
 #Stock sender 
 #1 Get CSV 
-
 #2 Clean a data
 #3 Choose data to send
 #4 Send email
