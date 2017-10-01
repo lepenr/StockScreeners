@@ -1,0 +1,137 @@
+import urllib.request, urllib.parse, urllib.error
+import csv
+import urllib.request  as urllib2 
+from gtts import gTTS
+import os
+import pygame as pg
+import time
+
+
+#play sound
+def play_music(music_file, volume=0.8):
+    '''
+    stream music with mixer.music module in a blocking manner
+    this will stream the sound from disk while playing
+    '''
+    # set up the mixer
+    freq = 22050     # audio CD quality
+    bitsize = -16    # unsigned 16 bit
+    channels = 2     # 1 is mono, 2 is stereo
+    buffer = 2048    # number of samples (experiment to get best sound)
+    pg.mixer.init(freq, bitsize, channels, buffer)
+    # volume value 0.0 to 1.0
+    pg.mixer.music.set_volume(volume)
+    clock = pg.time.Clock()
+    try:
+        pg.mixer.music.load(music_file)
+        print("Playing file {}".format(music_file))
+    except pg.error:
+        print("File {} not found! ({})".format(music_file, pg.get_error()))
+        return
+    pg.mixer.music.play()
+    while pg.mixer.music.get_busy():
+        # check if playback has finished
+        clock.tick(60)
+
+		
+#Open 
+
+#Get tickets from .txt file -> ticket_output
+def symbolsFromTxt():
+#Get tickets from .txt file -> ticket_output
+		ticket_output = ''
+		with open('tickets.txt','r') as f:
+			for line in f:
+				for word in line.split():
+				  ticket_output = ticket_output  + word +'+'
+				return ticket_output
+				  
+
+#URL for tickets Tickets		  
+
+
+
+def download(ticket):
+#Downloading CSV file 
+			
+			print("Downloading csv file")
+			f = urllib.request.urlopen('http://finance.yahoo.com/d/quotes.csv?s=' + ticket + '&f=snbaopl1p2va2')
+			data = f.read()
+			print("Downlaod successful")
+			with open("quotes.csv", "wb") as code:
+				code.write(data)
+	
+
+#save text as a google api sound
+def speak(audioString):
+    tts = gTTS(text=audioString, lang='en')
+    tts.save("Test_audio2.mp3")
+	
+def userInput():
+	input_var = input("Enter something: ")
+	return input_var
+
+
+
+def getData():	
+	ifile  = open('quotes.csv', "r")
+	read = csv.reader(ifile)
+	fifteen = ''
+	ten = ''
+	five = ''
+	high_volume = ''
+	permanent_ticket = ''
+	output = ''
+	open2 = ''
+	for row in read :
+			symbol = row[0]
+			name = row[1].replace('Inc.',' ')
+			bid = row[2]
+			ask = row[3]
+			open2 = row[4]
+			previousClose = row[5]
+			last = row[6]
+			change = row[7].replace('%','')
+			change = float(change.replace('N/A','0'))
+			volume = float(row[8].replace('N/A','0'))
+			volume = float(row[8].replace('N/A','0'))/1000000
+			avgvolume = float(row[9].replace('N/A','0'))/1000000
+			
+	#Output text to read
+	output = output + ', ' +name + ' ' + 'LAST Price ' + last
+	return output
+
+
+def jarvis(data):
+    if "apple" in data:
+        return 'AAPL'
+ 
+    if "visa" in data:
+        return 'V'
+    
+    else: return 'Z'
+
+#1.User input from keyboard you can use speech recognition instera	
+terminalInput = userInput()
+
+#2. Call Jarvis with input from user
+data = jarvis(terminalInput)
+
+#3.donload data on base on user input
+
+download(data)
+
+#4.parse date
+Neco = getData()
+
+#5 Print Save Speak
+
+#speak call
+speak(Neco)
+print(Neco)
+print(terminalInput)
+
+#play sound
+music_file = "Test_audio2.mp3"
+# optional volume 0 to 1.0
+play_music(music_file)
