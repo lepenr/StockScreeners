@@ -1,4 +1,4 @@
-Live stock sender using CSV file from YAHOO HTML finnace service
+Stock sender, CSV,YAHOO HTML finnace service
 
 #worsk only with Python 2
 
@@ -8,7 +8,7 @@ Live stock sender using CSV file from YAHOO HTML finnace service
 
 #2 Clean a data
 
-#3 Choose data to send
+#3 Get data
 
 #4 Send email
 
