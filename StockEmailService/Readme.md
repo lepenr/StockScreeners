@@ -1,4 +1,4 @@
-Stock sender 
+Stock sender by email
 
 #worsk only with Python 2
 #Stock sender 
@@ -9,3 +9,4 @@ Stock sender
 
 #Requaried
 #1. create tickets.txt with stock symbols with just space betwen, see an example in file tickets
+#2. add gmail email adress and passowrd
