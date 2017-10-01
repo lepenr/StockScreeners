@@ -1,4 +1,4 @@
-Stock sender using CSV file from YAHOO HTML finnace service
+Live stock sender using CSV file from YAHOO HTML finnace service
 
 #worsk only with Python 2
 
