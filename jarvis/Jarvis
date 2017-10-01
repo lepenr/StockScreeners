@@ -35,6 +35,7 @@ def play_music(music_file, volume=0.8):
 
 		
 #Open 
+#Yrl = 'http://finance.yahoo.com/d/quotes.csv?s=AAPL&f=snbaopl1p2va2'
 
 #Get tickets from .txt file -> ticket_output
 def symbolsFromTxt():
