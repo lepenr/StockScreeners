@@ -13,3 +13,8 @@
 #4. tranform text data into voice using gTTS
 
 #5. play mp3 file with voice
+
+pip3 install speechrecognition
+pip3 install gtts
+pip3 install pygame
+pip3 install PyAudio
